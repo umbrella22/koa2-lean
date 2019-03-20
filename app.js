@@ -7,7 +7,7 @@ const logger = require("koa-logger");
 
 const index = require("./routes/index");
 const users = require("./routes/users");
-const syslinten = require("./routes/syslinten");
+const sys = require("./routes/syslinten");
 
 // error handler
 onerror(app);
@@ -33,7 +33,7 @@ app.use(async (ctx, next) => {
 // routes
 app.use(index.routes(), index.allowedMethods());
 app.use(users.routes(), users.allowedMethods());
-app.use(syslinten.routes(), syslinten.allowedMethods());
+app.use(sys.routes(), sys.allowedMethods());
 
 // error-handling
 app.on("error", (err, ctx) => {

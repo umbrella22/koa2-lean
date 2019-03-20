@@ -1,6 +1,10 @@
 const router = require('koa-router')()
+const get = require("../server/sysstate")
+router.prefix('/sys')
 
-router.get()
+router.get("/", (ctx, next) => {
+    ctx.body = get
+})
 
 
 
