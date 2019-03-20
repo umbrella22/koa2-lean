@@ -4,7 +4,6 @@ var tools = require('./tools')
 var interval = -1;
 var currCPU = 0;
 var freeMem, totalMem, usedMem = 0;
-var data
 
 function updateCPU() {
     setTimeout(function () {
@@ -29,14 +28,10 @@ async function getsysmsg() {
     return {
         '空闲内存': freeMem.toFixed(1) + 'MB',
         '总内存': totalMem.toFixed(1) + 'MB',
-        '已使用的内存': usedMem + 'MB',
+        '已使用的内存': usedMem.toFixed(1) + 'MB',
         'cpu使用率': currCPU.toFixed(1) + '%'
     }
 }
-getsysmsg().then(res=>{
-    data = res
-    console.log(data)
-})
 // io.sockets.on('connection', () => {
 //     if (interval < 0) {
 //         interval = setInterval(() => {
@@ -57,4 +52,4 @@ getsysmsg().then(res=>{
 //     }
 // })
 
-module.exports = data
+module.exports = getsysmsg()
