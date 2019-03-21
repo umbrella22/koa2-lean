@@ -1,20 +1,21 @@
 const osutlis = require("os-utils")
-const io = require("socket.io").listen(8000)
+// const io = require("socket.io").listen(8000)
 var tools = require('./tools')
 var interval = -1;
-var freeMem, totalMem, usedMem,currCPU = 0;
+var freeMem, totalMem, usedMem, currCPU = 0;
 
 async function getsysmsg() {
+    console.log(1)
     if (osutlis.platform() === 'linux') {
         usedMem = await tools.linuxMem()
         currCPU = await tools.cpu()
         console.log(currCPU)
         totalMem = osutlis.totalmem(value => value / (1024 * 1024 * 1024 * 1024)),
-        freeMem = totalMem - usedMem
+            freeMem = totalMem - usedMem
     } else {
         freeMem = osutlis.freemem(value => value / (1024 * 1024 * 1024 * 1024)),
-        totalMem = osutlis.totalmem(value => value / (1024 * 1024 * 1024 * 1024)),
-        usedMem = totalMem - freeMem
+            totalMem = osutlis.totalmem(value => value / (1024 * 1024 * 1024 * 1024)),
+            usedMem = totalMem - freeMem
     }
     return {
         '空闲内存': freeMem.toFixed(1) + 'MB',
@@ -43,4 +44,4 @@ async function getsysmsg() {
 //     }
 // })
 
-module.exports = getsysmsg()
+module.exports = () => getsysmsg()

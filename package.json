@@ -19,6 +19,7 @@
     "koa-router": "^7.4.0",
     "koa-static": "^3.0.0",
     "koa-views": "^5.2.1",
+    "koa2-cors": "^2.0.6",
     "os-utils": "0.0.14",
     "pug": "^2.0.0-rc.1",
     "socket.io": "^2.2.0"
