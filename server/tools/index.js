@@ -1,3 +1,4 @@
 module.exports = ({
-    linux: () => require('./linux')()
+    linuxMem: () => require('./linuxMem')(),
+    cpu: () => require('./getcpustat')()
 });

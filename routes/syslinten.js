@@ -3,15 +3,17 @@ const get = require("../server/sysstate")
 router.prefix('/sys')
 
 router.get("/", (ctx, next) => {
-    let data = async () => {
+    let asyget = async () => {
         try {
-            let datax = await get
-            ctx.body = datax
+            console.log(1)
+            let data = await get
+            console.log("data："+data)
+            ctx.body = data
         } catch (error) {
             console.log(error)
         }
     }
-    data()
+    asyget()
 })
 
 

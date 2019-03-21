@@ -2,22 +2,13 @@ const osutlis = require("os-utils")
 const io = require("socket.io").listen(8000)
 var tools = require('./tools')
 var interval = -1;
-var currCPU = 0;
-var freeMem, totalMem, usedMem = 0;
-
-function updateCPU() {
-    setTimeout(function () {
-        osutlis.cpuUsage(function (value) {
-            currCPU = value * 100.0;
-            updateCPU();
-        });
-    }, 0);
-}
-updateCPU();
+var freeMem, totalMem, usedMem,currCPU = 0;
 
 async function getsysmsg() {
     if (osutlis.platform() === 'linux') {
-        usedMem = await tools.linux()
+        usedMem = await tools.linuxMem()
+        currCPU = await tools.cpu()
+        console.log(currCPU)
         totalMem = osutlis.totalmem(value => value / (1024 * 1024 * 1024 * 1024)),
         freeMem = totalMem - usedMem
     } else {
