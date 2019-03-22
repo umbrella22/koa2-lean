@@ -13,6 +13,7 @@ async function getsysmsg() {
         totalMem = osutlis.totalmem(value => value / (1024 * 1024 * 1024 * 1024)),
             freeMem = totalMem - usedMem
     } else {
+        currCPU = await tools.cpu()
         freeMem = osutlis.freemem(value => value / (1024 * 1024 * 1024 * 1024)),
             totalMem = osutlis.totalmem(value => value / (1024 * 1024 * 1024 * 1024)),
             usedMem = totalMem - freeMem
@@ -20,7 +21,7 @@ async function getsysmsg() {
     return {
         '空闲内存': freeMem.toFixed(1) + 'MB',
         '总内存': totalMem.toFixed(1) + 'MB',
-        '已使用的内存': usedMem + 'MB',
+        '已使用的内存': usedMem.toFixed(1) + 'MB',
         'cpu使用率': currCPU.toFixed(1) + '%'
     }
 }

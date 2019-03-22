@@ -3,6 +3,7 @@ module.exports = () => {
         require('child_process').exec('free -m', (error, stdout, stderr) => {
             if (error) {
                 return reject(error)
+
             } else {
                 let lines = stdout.split("\n");
 
