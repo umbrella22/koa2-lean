@@ -1,12 +1,14 @@
 const router = require('koa-router')()
-const get = require("../server/sysstate")
+
+const get = require('../server/sysstate')
+
 router.prefix('/sys')
 
 router.get("/", async (ctx, next) => {
-    let data = await get()
-    ctx.body = data
-})
+    await get()
+     ctx.body = "启动socket服务"
 
+})
 
 
 

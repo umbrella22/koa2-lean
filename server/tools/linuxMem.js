@@ -10,7 +10,7 @@ module.exports = () => {
                 let str_mem_info = lines[1].replace(/[\s\n\r]+/g, ' ');
 
                 let mem_info = str_mem_info.split(' ')
-                return resovle(mem_info[3])
+                return resovle(mem_info[2])
             }
         });
     })
