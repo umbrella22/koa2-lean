@@ -1,6 +1,6 @@
 const router = require('koa-router')()
 
-const get = require('../server/sysstate')
+const get = require('../server/socket')
 
 router.prefix('/sys')
 

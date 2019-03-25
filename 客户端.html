@@ -23,6 +23,7 @@
         })
         socket.on('connect', () => {
             console.log("连接成功")
+            socket.emit('send', 'hello');
         })
         socket.on('getMsg', data => {
             console.log('服务端消息：', data);
