@@ -13,8 +13,8 @@ async function getsysmsg() {
     } else {
         currCPU = await tools.cpu().toFixed(1)
         freeMem = osutlis.freemem(value => value / (1024 * 1024 * 1024 * 1024)).toFixed(1),
-            totalMem = osutlis.totalmem(value => value / (1024 * 1024 * 1024 * 1024)).toFixed(1),
-            usedMem = totalMem - freeMem
+        totalMem = osutlis.totalmem(value => value / (1024 * 1024 * 1024 * 1024)).toFixed(1),
+        usedMem = totalMem - freeMem
     }
     return {
         '空闲内存': freeMem.toFixed(1) + 'MB',
